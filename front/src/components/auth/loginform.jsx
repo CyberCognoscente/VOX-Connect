@@ -10,40 +10,47 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex h-screen">
-      {/* Left: Vox Panel */}
+    <div className="flex h-screen overflow-hidden">
+      {/* Left Side */}
       <VoxLeftPanel />
 
-      {/* Right: Form */}
-      <div 
-        className="w-2/5 flex items-center justify-center shadow-lg" 
-        style={{ background: 'linear-gradient(135deg, #e8d5f2 0%, #d4c5e8 50%, #c8b8e0 100%)' }}
-      >
-        <form onSubmit={handleLogin} className="w-80 space-y-6 bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
-          <h2 className="text-2xl font-semibold text-center text-gray-800">Sign In</h2>
-          
-          <input 
-            type="email" 
-            placeholder="Email Address" 
-            className="w-full border border-purple-200 p-3 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-white/90" 
+      {/* Right Side */}
+      <div className="w-[40%] flex items-center justify-center bg-[#12121e] ">
+        <form
+          onSubmit={handleLogin}
+          className="w-80 space-y-6 bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/20"
+        >
+          <h2 className="text-3xl font-semibold text-center text-white bg-clip-text ">
+            Sign In
+          </h2>
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="w-full border border-purple-400/40 bg-white/10 text-white placeholder-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
           />
-          
-          <input 
-            type="password" 
-            placeholder="Password" 
-            className="w-full border border-purple-200 p-3 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-transparent bg-white/90" 
+
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full border border-purple-400/40 bg-white/10 text-white placeholder-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
           />
-          
-          <button 
-            type="submit" 
-            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg hover:opacity-90 transition"
+
+          <button
+            type="submit"
+            className="w-full bg-blue-800 text-white py-3 rounded-lg font-semibold shadow-md hover:opacity-90 transition"
           >
             Sign In
           </button>
-          
-          <p className="text-center text-sm text-gray-700">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-purple-600 font-semibold">Sign Up</a>
+
+          <p className="text-center text-sm text-gray-300">
+            Don’t have an account?{" "}
+            <a
+              href="/signup"
+              className="text-400 font-semibold hover:underline"
+            >
+              Sign Up
+            </a>
           </p>
         </form>
       </div>
