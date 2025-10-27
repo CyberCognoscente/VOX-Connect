@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignupForm from "./components/auth/SignupForm";
 import ParamMitra from "./components/layout/ParamMitra";
+import DemoPage from "./components/demo/DemoPage"; // ✅ new import
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
 
         {/* 🔹 Main Bot Page */}
         <Route path="/param-mitra" element={<ParamMitra />} />
+
+        {/* 🔹 Demo Page */}
+        <Route path="/demo" element={<DemoPage />} /> {/* ✅ add this */}
 
         {/* 🔹 404 Fallback */}
         <Route
