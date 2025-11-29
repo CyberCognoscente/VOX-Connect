@@ -7,12 +7,17 @@ import {
   Globe,
   Zap,
   MessageSquare,
+  Bell,
+  Download,
+  PlusCircle,
 } from "lucide-react";
 
 export default function ParamMitra() {
   const [waveAnimation, setWaveAnimation] = useState(0);
   const [activePage, setActivePage] = useState("welcome");
+  const [isWidgetReady, setIsWidgetReady] = useState(false);
 
+  // 🔄 Circle animation effect
   useEffect(() => {
     const interval = setInterval(() => {
       setWaveAnimation((prev) => (prev + 1) % 360);
@@ -20,6 +25,7 @@ export default function ParamMitra() {
     return () => clearInterval(interval);
   }, []);
 
+  // ✅ Load Vapi script only once
   useEffect(() => {
     const src =
       "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
@@ -27,7 +33,10 @@ export default function ParamMitra() {
       const script = document.createElement("script");
       script.src = src;
       script.async = true;
+      script.onload = () => setIsWidgetReady(true);
       document.body.appendChild(script);
+    } else {
+      setIsWidgetReady(true);
     }
   }, []);
 
@@ -68,6 +77,30 @@ export default function ParamMitra() {
           </button>
 
           <button
+            onClick={() => alert("Starting a new chat...")}
+            className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
+          >
+            <PlusCircle size={22} strokeWidth={2} />
+            <span className="font-medium">Fresh Chat</span>
+          </button>
+
+          <button
+            onClick={() => alert("Opening notifications...")}
+            className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
+          >
+            <Bell size={22} strokeWidth={2} />
+            <span className="font-medium">Notifications</span>
+          </button>
+
+          <button
+            onClick={() => alert("Exporting chat logs...")}
+            className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
+          >
+            <Download size={22} strokeWidth={2} />
+            <span className="font-medium">Export Chats</span>
+          </button>
+
+          <button
             onClick={() => (window.location.href = "/")}
             className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
           >
@@ -82,86 +115,77 @@ export default function ParamMitra() {
       </div>
 
       {/* Main Area */}
-      <div className="flex-1 flex items-center justify-center relative overflow-hidden px-6">
+      <div className="flex-1 flex bg-[#12121e] items-center justify-center relative overflow-hidden px-6">
         {activePage === "welcome" ? (
           <>
-            {/* Background animation */}
-            <div className="absolute inset-0">
-              <div className="absolute top-[10%] left-[15%] w-[500px] h-[500px] bg-[#1A2438]/40 rounded-full blur-3xl animate-pulse"></div>
-              <div
-                className="absolute bottom-[10%] right-[15%] w-[500px] h-[500px] bg-[#6DB8C7]/30 rounded-full blur-3xl animate-pulse"
-                style={{ animationDelay: "1s", animationDuration: "3s" }}
-              ></div>
-            </div>
-
-            {/* Main content */}
             <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl px-8 text-center">
               <h1 className="text-6xl font-bold leading-tight mb-4">
                 <span className="text-white">Multilingual</span>{" "}
-                <span className="text-[#6DB8C7]">AI Bot</span>
+                <span className="text-[#ffffff]">AI Bot</span>
               </h1>
               <p className="text-gray-400 text-lg mb-6">
                 Your intelligent voice assistant for seamless communication
               </p>
-              
-              {/* AI Circle + Widget (you can move freely) */}
-             <div className="relative flex items-center justify-center w-[320px] h-[320px] mb-16 z-10">
-  <div className="absolute inset-0 bg-gradient-to-br from-[#1E2A3E]/50 to-[#0A0F1C]/30 rounded-full blur-2xl"></div>
 
-  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-    <path
-      d={`M 200 200 m -${
-        160 + Math.sin(waveAnimation * 0.05) * 12
-      } 0 a ${160 + Math.sin(waveAnimation * 0.05) * 12} ${
-        160 + Math.sin(waveAnimation * 0.05) * 12
-      } 0 1 0 ${
-        2 * (160 + Math.sin(waveAnimation * 0.05) * 12)
-      } 0 a ${160 + Math.sin(waveAnimation * 0.05) * 12} ${
-        160 + Math.sin(waveAnimation * 0.05) * 12
-      } 0 1 0 -${
-        2 * (160 + Math.sin(waveAnimation * 0.05) * 12)
-      } 0`}
-      fill="none"
-      stroke="url(#gradient1)"
-      strokeWidth="3"
-      opacity="0.6"
-    />
-    <defs>
-      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#3A8DAB" />
-        <stop offset="100%" stopColor="#6DB8C7" />
-      </linearGradient>
-    </defs>
-  </svg>
+              <div className="relative flex items-center justify-center w-[320px] h-[320px] mb-16 z-10">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1E2A3E]/50 to-[#0A0F1C]/30 rounded-full blur-2xl"></div>
 
-  {/* Widget - freely movable */}
-  <div
-    className="absolute z-50"
-    style={{
-      transform: "translate(80px, 60px)", // move it here
-    }}
-  >
-    <vapi-widget
-      public-key="38fb0f5f-5a6c-4469-8afa-8eb5b987d738"
-      assistant-id="ec2f45ca-a09b-47a5-a9c1-fb89a4171af6"
-      mode="voice"
-      title="START"
-      theme="dark"
-      base-bg-color="#101726"
-      accent-color="#6DB8C7"
-      cta-button-color="#3A8DAB"
-      cta-button-text-color="#FFFFFF"
-      border-radius="large"
-      size="compact"
-      start-button-text="Start"
-      end-button-text="End"
-      voice-show-transcript="false"
-    ></vapi-widget>
-  </div>
-</div>
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+                  <path
+                    d={`M 200 200 m -${
+                      160 + Math.sin(waveAnimation * 0.05) * 12
+                    } 0 a ${160 + Math.sin(waveAnimation * 0.05) * 12} ${
+                      160 + Math.sin(waveAnimation * 0.05) * 12
+                    } 0 1 0 ${
+                      2 * (160 + Math.sin(waveAnimation * 0.05) * 12)
+                    } 0 a ${160 + Math.sin(waveAnimation * 0.05) * 12} ${
+                      160 + Math.sin(waveAnimation * 0.05) * 12
+                    } 0 1 0 -${
+                      2 * (160 + Math.sin(waveAnimation * 0.05) * 12)
+                    } 0`}
+                    fill="none"
+                    stroke="url(#gradient1)"
+                    strokeWidth="3"
+                    opacity="0.6"
+                  />
+                  <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#3A8DAB" />
+                      <stop offset="100%" stopColor="#6DB8C7" />
+                    </linearGradient>
+                  </defs>
+                </svg>
 
+                {/* ✅ Updated Widget Embed */}
+                {isWidgetReady && (
+                  <div
+                    className="absolute"
+                    style={{
+                      transform: "translate(80px, 60px)",
+                      zIndex: 9999,
+                    }}
+                  >
+                    <vapi-widget
+                      assistant-id="a1b369dd-3dd5-42d4-83c6-61fbdf9be93d"
+                      public-key="9756ba52-582a-4625-8c42-3e1e3d08eee0"
+                      mode="voice"
+                      title="Start"
+                      theme="dark"
+                      base-bg-color="#101726"
+                      accent-color="#6DB8C7"
+                      cta-button-color="#3A8DAB"
+                      cta-button-text-color="#FFFFFF"
+                      border-radius="large"
+                      size="compact"
+                      start-button-text="Start"
+                      end-button-text="End"
+                      voice-show-transcript="false"
+                    ></vapi-widget>
+                  </div>
+                )}
+              </div>
 
-              {/* Feature Section (fully restored) */}
+              {/* Features Section */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                 <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
                   <Globe className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
@@ -193,14 +217,13 @@ export default function ParamMitra() {
             </div>
           </>
         ) : (
-          // Profile Page (unchanged)
+          // Profile Page
           <div className="bg-[#111a2e] p-10 rounded-2xl shadow-2xl w-[650px] border border-[#3A8DAB]/30 z-10">
             <h2 className="text-3xl font-semibold mb-4 text-[#6DB8C7]">
               User Information
             </h2>
             <p className="text-gray-400 mb-6">
-              Please fill in your details to personalize your VoxConnect
-              experience.
+              Please fill in your details to personalize your VoxConnect experience.
             </p>
 
             <form className="grid grid-cols-2 gap-4">
@@ -214,6 +237,10 @@ export default function ParamMitra() {
               />
               <input
                 placeholder="Mobile Number"
+                className="bg-[#1A2438] p-3 rounded-lg col-span-1"
+              />
+              <input
+                placeholder="Gender"
                 className="bg-[#1A2438] p-3 rounded-lg col-span-1"
               />
               <input
@@ -232,7 +259,7 @@ export default function ParamMitra() {
               <select className="bg-[#1A2438] p-3 rounded-lg col-span-1">
                 <option>English</option>
                 <option>Hindi</option>
-                <option>Spanish</option>
+                <option>Marathi</option>
               </select>
               <select className="bg-[#1A2438] p-3 rounded-lg col-span-1">
                 <option>None</option>

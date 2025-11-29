@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Globe, MessageSquare, Mic, Zap } from "lucide-react";
 
 const DemoPage = () => {
   const navigate = useNavigate();
 
+  // 🧠 Load Vapi Widget Script
+  useEffect(() => {
+    const src =
+      "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
+    if (!document.querySelector(`script[src="${src}"]`)) {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   return (
-    <div className="h-screen w-full bg-gradient-to-b from-[#0a0a2e] via-[#0f163b] to-[#0a0a2e] flex flex-col items-center justify-between text-white relative overflow-hidden">
-      
+    <div className="h-screen w-full bg-gradient-to-b bg-[#07031e] flex flex-col items-center justify-between text-white relative overflow-hidden">
       {/* 🔹 Navbar */}
       <nav className="w-full flex justify-between items-center px-12 py-6 bg-transparent fixed top-0 left-0 z-20">
         <h1 className="text-3xl font-extrabold text-white tracking-wide">
-          VOX<span className="text-[#6fe0ff]">CONNECT</span>
+          VOX<span className="text-[#ffffff]">CONNECT</span>
         </h1>
 
         <div className="flex gap-6">
@@ -33,18 +44,42 @@ const DemoPage = () => {
       {/* 🔹 Title Section */}
       <div className="mt-32 text-center">
         <h1 className="text-6xl font-extrabold">
-          Multilingual <span className="text-[#6fe0ff]">AI Bot</span>
+          Multilingual <span className="text-[#fafafa]">AI Bot</span>
         </h1>
         <p className="text-gray-300 mt-3 text-xl">
           Your intelligent voice assistant for seamless communication
         </p>
-        
       </div>
 
       {/* 🔹 Central Animated Circle */}
       <div className="relative flex justify-center items-center mt-16">
         <div className="w-64 h-64 rounded-full border-2 border-[#6fe0ff] animate-pulse opacity-60"></div>
         <div className="absolute w-52 h-52 rounded-full border border-[#4cc9f0] animate-ping"></div>
+
+        {/* 🧩 Updated Vapi Widget Assistant */}
+        <div
+          className="absolute z-50"
+          style={{
+            transform: "translate(80px, 60px)",
+          }}
+        >
+          <vapi-widget
+            assistant-id="8f6f08f0-99fd-410f-a8e9-34b0e6c9866f"
+            public-key="51857c0b-55d1-4f3d-8227-cd34d1b58f71"
+            mode="voice"
+            title="START"
+            theme="dark"
+            base-bg-color="#101726"
+            accent-color="#6DB8C7"
+            cta-button-color="#3A8DAB"
+            cta-button-text-color="#FFFFFF"
+            border-radius="large"
+            size="compact"
+            start-button-text="Start"
+            end-button-text="End"
+            voice-show-transcript="false"
+          ></vapi-widget>
+        </div>
       </div>
 
       {/* 🔹 Features Section */}
@@ -77,9 +112,7 @@ const DemoPage = () => {
           <div className="bg-[#111a3a] p-6 rounded-xl shadow-lg text-center hover:bg-[#1a2450] transition duration-300">
             <Zap className="mx-auto mb-4 text-[#6fe0ff]" size={36} />
             <h3 className="text-2xl font-semibold mb-2">Contextual AI</h3>
-            <p className="text-gray-400 text-sm">
-              Context-aware responses
-            </p>
+            <p className="text-gray-400 text-sm">Context-aware responses</p>
           </div>
         </div>
       </div>

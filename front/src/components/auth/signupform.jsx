@@ -52,7 +52,7 @@ function SignupForm() {
           <p className="text-center text-sm text-gray-300">
             Already have an account?{" "}
             <a href="/" className="text-400 font-semibold hover:underline">
-              Sign In
+              Login
             </a>
           </p>
         </form>
