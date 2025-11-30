@@ -127,7 +127,37 @@ export default function ParamMitra() {
                 Your intelligent voice assistant for seamless communication
               </p>
 
-              <div className="relative flex items-center justify-center w-[320px] h-[320px] mb-16 z-10">
+               {/* Features Section */}
+              <div className="grid mt-10 grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
+                  <Globe className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
+                  <h4 className="text-lg font-semibold mb-2">Multilingual</h4>
+                  <p className="text-gray-400 text-sm">
+                    Supports over 50 languages
+                  </p>
+                </div>
+                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
+                  <MessageSquare className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
+                  <h4 className="text-lg font-semibold mb-2">Personalities</h4>
+                  <p className="text-gray-400 text-sm">Multiple switching</p>
+                </div>
+                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
+                  <Mic className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
+                  <h4 className="text-lg font-semibold mb-2">Voice Assistant</h4>
+                  <p className="text-gray-400 text-sm">
+                    Real-time voice interaction
+                  </p>
+                </div>
+                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
+                  <Zap className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
+                  <h4 className="text-lg font-semibold mb-2">Contextual AI</h4>
+                  <p className="text-gray-400 text-sm">
+                    Context-aware responses
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative mt-5 flex  items-center justify-center w-[320px] h-[320px] mb-4 z-10">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1E2A3E]/50 to-[#0A0F1C]/30 rounded-full blur-2xl"></div>
 
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
@@ -185,35 +215,7 @@ export default function ParamMitra() {
                 )}
               </div>
 
-              {/* Features Section */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <Globe className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Multilingual</h4>
-                  <p className="text-gray-400 text-sm">
-                    Supports over 50 languages
-                  </p>
-                </div>
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <MessageSquare className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Personalities</h4>
-                  <p className="text-gray-400 text-sm">Multiple switching</p>
-                </div>
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <Mic className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Voice Assistant</h4>
-                  <p className="text-gray-400 text-sm">
-                    Real-time voice interaction
-                  </p>
-                </div>
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <Zap className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Contextual AI</h4>
-                  <p className="text-gray-400 text-sm">
-                    Context-aware responses
-                  </p>
-                </div>
-              </div>
+              
             </div>
           </>
         ) : (
