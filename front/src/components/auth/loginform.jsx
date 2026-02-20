@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import VoxLeftPanel from "./VoxLeftPanel";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaLinkedin, FaGithub } from "react-icons/fa";
+import VoxLeftPanel from "./VoxLeftPanel";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -11,81 +11,78 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Left Side */}
+    <div className="vox-page-enter min-h-screen lg:flex">
       <VoxLeftPanel />
 
-      {/* Right Side */}
-      <div className="w-[40%] flex items-center justify-center bg-[#12121e]">
+      <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0B1324] px-5 lg:w-[42%]">
+        <div className="absolute -top-10 right-0 h-72 w-72 rounded-full bg-[#3A8DAB]/20 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-[#6DB8C7]/15 blur-3xl"></div>
+
         <form
           onSubmit={handleLogin}
-          className="w-80 space-y-6 bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/20"
+          className="vox-glass vox-stagger relative z-10 w-full max-w-md space-y-6 rounded-3xl p-8 md:p-10" style={{ animationDelay: "120ms" }}
         >
-          <h2 className="text-3xl font-semibold text-center text-white bg-clip-text">
-            Login
-          </h2>
+          <div>
+            <p className="mb-2 text-sm text-[#b8cae0]">Welcome back</p>
+            <h2 className="text-4xl font-bold text-white">Login</h2>
+          </div>
 
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="w-full border border-purple-400/40 bg-white/10 text-white placeholder-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
-          />
+          <div className="space-y-4">
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="w-full rounded-xl border border-[#86C7D5]/30 bg-[#0f1b30]/80 px-4 py-3 text-white placeholder:text-[#8ea7c3] outline-none transition focus:border-[#86C7D5] focus:ring-2 focus:ring-[#6DB8C7]/35"
+            />
 
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full border border-purple-400/40 bg-white/10 text-white placeholder-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none"
-          />
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full rounded-xl border border-[#86C7D5]/30 bg-[#0f1b30]/80 px-4 py-3 text-white placeholder:text-[#8ea7c3] outline-none transition focus:border-[#86C7D5] focus:ring-2 focus:ring-[#6DB8C7]/35"
+            />
+          </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-800 text-white py-3 rounded-lg font-semibold shadow-md hover:opacity-90 transition"
+            className="w-full rounded-xl bg-gradient-to-r from-[#3A8DAB] to-[#6DB8C7] py-3 font-semibold text-white shadow-[0_10px_30px_-10px_rgba(58,141,171,0.9)] transition hover:brightness-110"
           >
-            Login
+            Enter Workspace
           </button>
 
-          {/* OR Divider */}
-          <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-            <span className="w-1/4 h-[1px] bg-gray-500/50"></span>
+          <div className="flex items-center justify-center gap-2 text-sm text-[#94aac1]">
+            <span className="h-px w-16 bg-[#7088a8]/40"></span>
             <span>or continue with</span>
-            <span className="w-1/4 h-[1px] bg-gray-500/50"></span>
+            <span className="h-px w-16 bg-[#7088a8]/40"></span>
           </div>
 
-          {/* Social Login Buttons */}
-          <div className="flex justify-center gap-5">
+          <div className="flex justify-center gap-4">
             <button
               type="button"
-              onClick={() => alert("Login with Google")}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-full border border-gray-500/40 transition"
+              className="rounded-full border border-[#8aa8c8]/40 bg-[#0f1b30]/80 p-3 transition hover:border-[#9ad7e5]/90 hover:bg-[#142746]"
               title="Login with Google"
             >
-              <FaGoogle size={22} className="text-[#DB4437]" />
+              <FaGoogle size={18} className="text-[#DB4437]" />
             </button>
-
             <button
               type="button"
-              onClick={() => alert("Login with LinkedIn")}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-full border border-gray-500/40 transition"
+              className="rounded-full border border-[#8aa8c8]/40 bg-[#0f1b30]/80 p-3 transition hover:border-[#9ad7e5]/90 hover:bg-[#142746]"
               title="Login with LinkedIn"
             >
-              <FaLinkedin size={22} className="text-[#0077B5]" />
+              <FaLinkedin size={18} className="text-[#0077B5]" />
             </button>
-
             <button
               type="button"
-              onClick={() => alert("Login with GitHub")}
-              className="p-3 bg-white/10 hover:bg-white/20 rounded-full border border-gray-500/40 transition"
+              className="rounded-full border border-[#8aa8c8]/40 bg-[#0f1b30]/80 p-3 transition hover:border-[#9ad7e5]/90 hover:bg-[#142746]"
               title="Login with GitHub"
             >
-              <FaGithub size={22} className="text-white" />
+              <FaGithub size={18} className="text-white" />
             </button>
           </div>
 
-          <p className="text-center text-sm text-gray-300">
-            Don’t have an account?{" "}
-            <a href="/signup" className="text-blue-400 font-semibold hover:underline">
+          <p className="text-center text-sm text-[#b7c8dc]">
+            Don&apos;t have an account?{" "}
+            <Link to="/signup" className="font-semibold text-[#8ed9ea] hover:underline">
               Sign Up
-            </a>
+            </Link>
           </p>
         </form>
       </div>

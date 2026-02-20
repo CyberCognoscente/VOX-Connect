@@ -1,54 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   User,
   LogOut,
   Home,
-  Mic,
-  Globe,
-  Zap,
-  MessageSquare,
   Bell,
   Download,
   PlusCircle,
+  Bot,
+  Heart,
+  GraduationCap,
+  Briefcase,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ParamMitra() {
-  const [waveAnimation, setWaveAnimation] = useState(0);
+  const navigate = useNavigate();
   const [activePage, setActivePage] = useState("welcome");
-  const [isWidgetReady, setIsWidgetReady] = useState(false);
 
-  // 🔄 Circle animation effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWaveAnimation((prev) => (prev + 1) % 360);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ✅ Load Vapi script only once
-  useEffect(() => {
-    const src =
-      "https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js";
-    if (!document.querySelector(`script[src="${src}"]`)) {
-      const script = document.createElement("script");
-      script.src = src;
-      script.async = true;
-      script.onload = () => setIsWidgetReady(true);
-      document.body.appendChild(script);
-    } else {
-      setIsWidgetReady(true);
-    }
-  }, []);
+  const botCards = [
+    {
+      title: "General Bot",
+      description: "General Q&A and everyday assistance",
+      icon: Bot,
+      path: "/param-mitra/general-bot",
+    },
+    {
+      title: "Friend Bot",
+      description: "Companion-style friendly conversation",
+      icon: Heart,
+      path: "/param-mitra/friend-bot",
+    },
+    {
+      title: "Educator Bot",
+      description: "Learning support and concept explanations",
+      icon: GraduationCap,
+      path: "/param-mitra/educator-bot",
+    },
+    {
+      title: "Professional Bot",
+      description: "Work-focused help and productivity support",
+      icon: Briefcase,
+      path: "/param-mitra/professional-bot",
+    },
+  ];
 
   return (
-    <div className="flex h-screen bg-gradient-to-b from-[#0A0F1C] via-[#0E1628] to-[#0A0F1C] text-white">
-      {/* Sidebar */}
-      <div className="w-72 bg-gradient-to-b from-[#101726] to-[#141C2C] p-8 flex flex-col shadow-2xl">
-        <div className="mb-16">
-          <h1 className="text-3xl font-bold tracking-tight text-white mb-2">
+    <div className="vox-page-enter flex min-h-screen md:h-screen bg-gradient-to-b from-[#0A0F1C] via-[#0E1628] to-[#0A0F1C] text-white">
+      <div className="w-24 md:w-72 bg-gradient-to-b from-[#101726] to-[#141C2C] p-4 md:p-8 flex flex-col shadow-2xl border-r border-[#6DB8C7]/15">
+        <div className="mb-8 md:mb-16">
+          <h1 className="hidden md:block text-3xl font-bold tracking-tight text-white mb-2">
             VOXCONNECT
           </h1>
-          <div className="h-1 w-20 bg-gradient-to-r from-[#6DB8C7] to-[#3A8DAB] rounded-full"></div>
+          <div className="mx-auto md:mx-0 h-1 w-10 md:w-20 bg-gradient-to-r from-[#6DB8C7] to-[#3A8DAB] rounded-full"></div>
         </div>
 
         <nav className="flex-1 space-y-3">
@@ -61,7 +64,7 @@ export default function ParamMitra() {
             }`}
           >
             <Home size={22} strokeWidth={2} />
-            <span className="font-medium">Welcome</span>
+            <span className="hidden md:block font-medium">Welcome</span>
           </button>
 
           <button
@@ -73,7 +76,7 @@ export default function ParamMitra() {
             }`}
           >
             <User size={22} strokeWidth={2} />
-            <span className="font-medium">Profile</span>
+            <span className="hidden md:block font-medium">Profile</span>
           </button>
 
           <button
@@ -81,7 +84,7 @@ export default function ParamMitra() {
             className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
           >
             <PlusCircle size={22} strokeWidth={2} />
-            <span className="font-medium">Fresh Chat</span>
+            <span className="hidden md:block font-medium">Fresh Chat</span>
           </button>
 
           <button
@@ -89,7 +92,7 @@ export default function ParamMitra() {
             className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
           >
             <Bell size={22} strokeWidth={2} />
-            <span className="font-medium">Notifications</span>
+            <span className="hidden md:block font-medium">Notifications</span>
           </button>
 
           <button
@@ -97,7 +100,7 @@ export default function ParamMitra() {
             className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
           >
             <Download size={22} strokeWidth={2} />
-            <span className="font-medium">Export Chats</span>
+            <span className="hidden md:block font-medium">Export Chats</span>
           </button>
 
           <button
@@ -105,127 +108,65 @@ export default function ParamMitra() {
             className="flex w-full items-center gap-4 px-5 py-4 rounded-xl hover:bg-[#202C46] text-gray-300 hover:text-white transition-all duration-300 hover:translate-x-1"
           >
             <LogOut size={22} strokeWidth={2} />
-            <span className="font-medium">Logout</span>
+            <span className="hidden md:block font-medium">Logout</span>
           </button>
         </nav>
 
         <div className="mt-auto pt-6 border-t border-white/10">
-          <p className="text-white/50 text-sm">Version 1.0.0</p>
+          <p className="hidden md:block text-white/50 text-sm">Version 1.0.0</p>
         </div>
       </div>
 
-      {/* Main Area */}
       <div className="flex-1 flex bg-[#12121e] items-center justify-center relative overflow-hidden px-6">
         {activePage === "welcome" ? (
-          <>
-            <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl px-8 text-center">
-              <h1 className="text-6xl font-bold leading-tight mb-4">
-                <span className="text-white">Multilingual</span>{" "}
-                <span className="text-[#ffffff]">AI Bot</span>
-              </h1>
-              <p className="text-gray-400 text-lg mb-6">
-                Your intelligent voice assistant for seamless communication
-              </p>
+          <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl px-4 md:px-8 text-center">
+            <div className="absolute inset-x-0 top-24 mx-auto h-72 w-[65%] rounded-full bg-[#3A8DAB]/10 blur-3xl"></div>
 
-               {/* Features Section */}
-              <div className="grid mt-10 grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <Globe className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Multilingual</h4>
-                  <p className="text-gray-400 text-sm">
-                    Supports over 50 languages
-                  </p>
-                </div>
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <MessageSquare className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Personalities</h4>
-                  <p className="text-gray-400 text-sm">Multiple switching</p>
-                </div>
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <Mic className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Voice Assistant</h4>
-                  <p className="text-gray-400 text-sm">
-                    Real-time voice interaction
-                  </p>
-                </div>
-                <div className="bg-[#131B2E] rounded-2xl p-6 w-56 text-center hover:bg-[#1A2438] transition-all duration-300">
-                  <Zap className="w-8 h-8 mx-auto mb-3 text-[#6DB8C7]" />
-                  <h4 className="text-lg font-semibold mb-2">Contextual AI</h4>
-                  <p className="text-gray-400 text-sm">
-                    Context-aware responses
-                  </p>
-                </div>
-              </div>
+            <h1 className="text-4xl md:text-7xl font-bold leading-tight mb-4 relative">
+              <span className="text-white">Choose Your</span>{" "}
+              <span className="text-[#ffffff]">Bot</span>
+            </h1>
+            <p className="text-gray-300 text-base md:text-xl mb-10 relative max-w-2xl">
+              Select one of the four bots to continue.
+            </p>
 
-              <div className="relative mt-5 flex  items-center justify-center w-[320px] h-[320px] mb-4 z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1E2A3E]/50 to-[#0A0F1C]/30 rounded-full blur-2xl"></div>
-
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-                  <path
-                    d={`M 200 200 m -${
-                      160 + Math.sin(waveAnimation * 0.05) * 12
-                    } 0 a ${160 + Math.sin(waveAnimation * 0.05) * 12} ${
-                      160 + Math.sin(waveAnimation * 0.05) * 12
-                    } 0 1 0 ${
-                      2 * (160 + Math.sin(waveAnimation * 0.05) * 12)
-                    } 0 a ${160 + Math.sin(waveAnimation * 0.05) * 12} ${
-                      160 + Math.sin(waveAnimation * 0.05) * 12
-                    } 0 1 0 -${
-                      2 * (160 + Math.sin(waveAnimation * 0.05) * 12)
-                    } 0`}
-                    fill="none"
-                    stroke="url(#gradient1)"
-                    strokeWidth="3"
-                    opacity="0.6"
-                  />
-                  <defs>
-                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#3A8DAB" />
-                      <stop offset="100%" stopColor="#6DB8C7" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-
-                {/* ✅ Updated Widget Embed */}
-                {isWidgetReady && (
-                  <div
-                    className="absolute"
-                    style={{
-                      transform: "translate(80px, 60px)",
-                      zIndex: 9999,
-                    }}
+            <div className="grid mt-2 grid-cols-1 md:grid-cols-2 gap-6 md:gap-7 w-full max-w-6xl">
+              {botCards.map((bot, index) => {
+                const Icon = bot.icon;
+                return (
+                  <button
+                    key={bot.title}
+                    type="button"
+                    onClick={() => navigate(bot.path)}
+                    style={{ animationDelay: `${120 + index * 90}ms` }}
+                    className="vox-stagger group relative overflow-hidden rounded-3xl p-6 md:p-10 min-h-[200px] md:min-h-[220px] text-left border border-[#3A8DAB]/25 bg-gradient-to-br from-[#17233A] via-[#131B2E] to-[#0F1728] hover:border-[#6DB8C7]/70 hover:shadow-[0_24px_60px_-20px_rgba(58,141,171,0.5)] transition-all duration-300 hover:-translate-y-1"
                   >
-                    <vapi-widget
-                      assistant-id="a1b369dd-3dd5-42d4-83c6-61fbdf9be93d"
-                      public-key="9756ba52-582a-4625-8c42-3e1e3d08eee0"
-                      mode="voice"
-                      title="Start"
-                      theme="dark"
-                      base-bg-color="#101726"
-                      accent-color="#6DB8C7"
-                      cta-button-color="#3A8DAB"
-                      cta-button-text-color="#FFFFFF"
-                      border-radius="large"
-                      size="compact"
-                      start-button-text="Start"
-                      end-button-text="End"
-                      voice-show-transcript="false"
-                    ></vapi-widget>
-                  </div>
-                )}
-              </div>
+                    <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-[#6DB8C7]/10 blur-2xl group-hover:bg-[#6DB8C7]/20 transition-all"></div>
 
-              
+                    <div className="relative">
+                      <div className="w-14 h-14 rounded-2xl bg-[#0E1A2F] border border-[#6DB8C7]/30 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+                        <Icon className="w-7 h-7 text-[#6DB8C7]" />
+                      </div>
+                      <h4 className="text-xl md:text-2xl font-semibold mb-2 tracking-tight">
+                        {bot.title}
+                      </h4>
+                      <p className="text-gray-300 text-base leading-relaxed">
+                        {bot.description}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-          </>
+          </div>
         ) : (
-          // Profile Page
           <div className="bg-[#111a2e] p-10 rounded-2xl shadow-2xl w-[650px] border border-[#3A8DAB]/30 z-10">
             <h2 className="text-3xl font-semibold mb-4 text-[#6DB8C7]">
               User Information
             </h2>
             <p className="text-gray-400 mb-6">
-              Please fill in your details to personalize your VoxConnect experience.
+              Please fill in your details to personalize your VoxConnect
+              experience.
             </p>
 
             <form className="grid grid-cols-2 gap-4">

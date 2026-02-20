@@ -1,29 +1,36 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginForm from "./components/auth/LoginForm";
-import SignupForm from "./components/auth/SignupForm";
+import LoginForm from "./components/auth/loginform";
+import SignupForm from "./components/auth/signupform";
 import ParamMitra from "./components/layout/ParamMitra";
-import DemoPage from "./components/demo/DemoPage"; // ✅ new import
+import DemoPage from "./components/demo/DemoPage";
+import GeneralBotPage from "./components/layout/GeneralBotPage";
+import FriendBotPage from "./components/layout/FriendBotPage";
+import EducatorBotPage from "./components/layout/EducatorBotPage";
+import ProfessionalBotPage from "./components/layout/ProfessionalBotPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* 🔹 Auth Routes */}
         <Route path="/" element={<LoginForm />} />
         <Route path="/signup" element={<SignupForm />} />
 
-        {/* 🔹 Main Bot Page */}
         <Route path="/param-mitra" element={<ParamMitra />} />
+        <Route path="/param-mitra/general-bot" element={<GeneralBotPage />} />
+        <Route path="/param-mitra/friend-bot" element={<FriendBotPage />} />
+        <Route path="/param-mitra/educator-bot" element={<EducatorBotPage />} />
+        <Route
+          path="/param-mitra/professional-bot"
+          element={<ProfessionalBotPage />}
+        />
 
-        {/* 🔹 Demo Page */}
-        <Route path="/demo" element={<DemoPage />} /> {/* ✅ add this */}
+        <Route path="/demo" element={<DemoPage />} />
 
-        {/* 🔹 404 Fallback */}
         <Route
           path="*"
           element={
             <h1 className="text-center mt-20 text-3xl font-semibold text-gray-400">
-              Page Not Found 😔
+              Page Not Found
             </h1>
           }
         />
