@@ -1,13 +1,17 @@
 import React from "react";
-import { Heart } from "lucide-react";
 import BotModeLayout from "./BotModeLayout";
+import { botConfigs } from "../../data/botConfigs";
 
 export default function FriendBotPage() {
+  const bot = botConfigs.friend;
+
   return (
     <BotModeLayout
-      title="Friend Bot"
-      description="Companion-style friendly conversation"
-      icon={Heart}
+      title={bot.title}
+      description={bot.description}
+      assistantId={bot.config.id}
+      assistantName={bot.config.name}
+      firstMessage={bot.config.firstMessage}
     />
   );
 }

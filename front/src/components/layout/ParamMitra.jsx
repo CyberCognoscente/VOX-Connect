@@ -12,6 +12,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { botConfigs } from "../../data/botConfigs";
 
 export default function ParamMitra() {
   const navigate = useNavigate();
@@ -19,26 +20,26 @@ export default function ParamMitra() {
 
   const botCards = [
     {
-      title: "General Bot",
-      description: "General Q&A and everyday assistance",
+      title: botConfigs.general.title,
+      description: botConfigs.general.description,
       icon: Bot,
       path: "/param-mitra/general-bot",
     },
     {
-      title: "Friend Bot",
-      description: "Companion-style friendly conversation",
+      title: botConfigs.friend.title,
+      description: botConfigs.friend.description,
       icon: Heart,
       path: "/param-mitra/friend-bot",
     },
     {
-      title: "Educator Bot",
-      description: "Learning support and concept explanations",
+      title: botConfigs.educator.title,
+      description: botConfigs.educator.description,
       icon: GraduationCap,
       path: "/param-mitra/educator-bot",
     },
     {
-      title: "Professional Bot",
-      description: "Work-focused help and productivity support",
+      title: botConfigs.professional.title,
+      description: botConfigs.professional.description,
       icon: Briefcase,
       path: "/param-mitra/professional-bot",
     },

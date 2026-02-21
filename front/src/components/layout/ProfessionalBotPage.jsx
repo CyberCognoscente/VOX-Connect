@@ -1,13 +1,17 @@
 import React from "react";
-import { Briefcase } from "lucide-react";
 import BotModeLayout from "./BotModeLayout";
+import { botConfigs } from "../../data/botConfigs";
 
 export default function ProfessionalBotPage() {
+  const bot = botConfigs.professional;
+
   return (
     <BotModeLayout
-      title="Professional Bot"
-      description="Work-focused help and productivity support"
-      icon={Briefcase}
+      title={bot.title}
+      description={bot.description}
+      assistantId={bot.config.id}
+      assistantName={bot.config.name}
+      firstMessage={bot.config.firstMessage}
     />
   );
 }

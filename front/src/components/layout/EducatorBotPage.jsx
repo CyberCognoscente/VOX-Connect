@@ -1,13 +1,17 @@
 import React from "react";
-import { GraduationCap } from "lucide-react";
 import BotModeLayout from "./BotModeLayout";
+import { botConfigs } from "../../data/botConfigs";
 
 export default function EducatorBotPage() {
+  const bot = botConfigs.educator;
+
   return (
     <BotModeLayout
-      title="Educator Bot"
-      description="Learning support and concept explanations"
-      icon={GraduationCap}
+      title={bot.title}
+      description={bot.description}
+      assistantId={bot.config.id}
+      assistantName={bot.config.name}
+      firstMessage={bot.config.firstMessage}
     />
   );
 }
