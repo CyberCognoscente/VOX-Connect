@@ -90,7 +90,7 @@ const DemoPage = () => {
             <div className="absolute z-20" style={{ transform: "translate(80px, 60px)" }}>
                 <vapi-widget
                   assistant-id="5f1485b7-0ae3-4611-8676-20ff378fac48"
-                  public-key="03f690fe-ad3e-4344-935d-b869cabd59f9"
+                  public-key="03f690fe-ad3e-4344-935d-b869cabd59f9"//its my main account 
                 mode="voice"
                 title="START"
                 theme="dark"
