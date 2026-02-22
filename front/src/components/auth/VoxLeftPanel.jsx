@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Globe2, Mic2, MessageSquareText, Sparkles } from "lucide-react";
-import botImage from "../../assets/bot.jpeg";
+import botImage from "../../assets/bot2.png";
 
 const VoxLeftPanel = () => {
   const navigate = useNavigate();
