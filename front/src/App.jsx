@@ -24,7 +24,7 @@ function App() {
           element={<ProfessionalBotPage />}
         />
 
-        <Route path="/demo" element={<DemoPage />} />
+        <Route path="/demo" element={<DemoPage />} /> 
 
         <Route
           path="*"

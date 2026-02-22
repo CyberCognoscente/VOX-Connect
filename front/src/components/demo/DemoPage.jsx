@@ -88,9 +88,9 @@ const DemoPage = () => {
             <div className="absolute h-[80%] w-[80%] rounded-full border border-[#6DB8C7]/35 animate-pulse"></div>
             <div className="absolute h-[60%] w-[60%] rounded-full border border-[#6DB8C7]/45"></div>
             <div className="absolute z-20" style={{ transform: "translate(80px, 60px)" }}>
-              <vapi-widget
-                assistant-id="8f6f08f0-99fd-410f-a8e9-34b0e6c9866f"
-                public-key="51857c0b-55d1-4f3d-8227-cd34d1b58f71"
+                <vapi-widget
+                  assistant-id="5f1485b7-0ae3-4611-8676-20ff378fac48"
+                  public-key="03f690fe-ad3e-4344-935d-b869cabd59f9"
                 mode="voice"
                 title="START"
                 theme="dark"
